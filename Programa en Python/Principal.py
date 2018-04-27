@@ -30,6 +30,8 @@ while True:
 
     if (seleccion=="1"):
 
+        Diccionario = {}
+
         #ASIGNACION DE PRESUPUESTO
         print (rangoPresupuesto)
         presupuesto = input("Ingrese se prespuesto: ")

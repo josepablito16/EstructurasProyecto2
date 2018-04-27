@@ -22,18 +22,16 @@ def obtenerRegalo(caracteristica):
 
     results = db.query(q, returns=(client.Node, str, client.Node))
     for r in results:       
-        #print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
-
+        print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
         return r[2]["name"]
 
 def obtenerPrecio(regalito):
     
-    q = 'MATCH (u:Caracterista)-[r:b]->(m:Regalos) WHERE m.name="'+regalito+'" RETURN u, type(r), m'
+    q = 'MATCH (u:Regalos)-[r:b]->(m:Caracteristica) WHERE u.name="'+regalito+'" RETURN u, type(r), m'
 
     results = db.query(q, returns=(client.Node, str, client.Node))
     for r in results:      
-        print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
-
+        #print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
         return r[2]["name"]
 
 def asignarPuntos(caracteristica,Diccionario,regalo):    
@@ -41,18 +39,18 @@ def asignarPuntos(caracteristica,Diccionario,regalo):
     ptos = caracteristica
 
     if(regalo in Diccionario):            
-        ptosActuales = Diccionario[regalo[1]]
+        ptosActuales = Diccionario[regalo][1]
         ptosActuales = ptosActuales + ptos
         
         Diccionario.insert(regalo[1],ptosActuales)
         
     else:
 
-        #precio = obtenerPrecio(regalo)
+        precio = obtenerPrecio(regalo)
         
         Diccionario[regalo] = []
         Diccionario[regalo].append(ptos)
-        Diccionario[regalo].append(200)                
+        Diccionario[regalo].append(precio)                
 
     return Diccionario
     
