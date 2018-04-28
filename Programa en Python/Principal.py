@@ -8,7 +8,8 @@
     # Oscar Juarez - 17315
 
 
-from Implementacion import *    
+from Implementacion import *
+
 
 #___________Declaracion de variables__________#
 
@@ -21,6 +22,7 @@ listaPersonalidad = "\nComo describiria la personalidad de la persona? \n1. Intr
 listaOcasion = "\nCual es la ocasion del reglao? \n1. Regalo casual \n2. Regalo por celebracion \n3. Regalo de fecha/evento importante"
 Diccionario = {}
 
+
 #Programa principal
 
 while True:
@@ -30,11 +32,19 @@ while True:
 
     if (seleccion=="1"):
 
-        Diccionario = {}
-
         #ASIGNACION DE PRESUPUESTO
         print (rangoPresupuesto)
-        presupuesto = input("Ingrese se prespuesto: ")
+        presupuesto = int(input("Ingrese se prespuesto: "))
+        dinero=""
+        if(presupuesto==1):
+            dinero="Bajo"
+
+        if(presupuesto==2):
+            dinero="Medio"
+
+        if(presupuesto==3):
+            dinero="Alto"
+
         
 
         #ASIGNACION DE GENEROS
@@ -48,10 +58,9 @@ while True:
         elif (genero == "3"):
             genero = "Indefinido"
 
-        regalo = obtenerRegalo(genero)
-        Diccionario = asignarPuntos(4,Diccionario,regalo)
-
-
+        Diccionario = obtenerRegalo(genero,Diccionario,1)
+        print(Diccionario)
+       
         #ASIGNACION DE GUSTOS
         print (listaGustos)
         gusto = input("Ingrese el gusto: ")
@@ -73,9 +82,8 @@ while True:
         elif (gusto == "8"):
             gustos = "Aventuras"
 
-        regalo = obtenerRegalo(gustos)
-        Diccionario = asignarPuntos(6,Diccionario,regalo)
-        
+        Diccionario = obtenerRegalo(gustos,Diccionario,1)
+        print(Diccionario)
 
         #ASIGNACION DE CERCANIA
         print (listaCercania)
@@ -92,8 +100,8 @@ while True:
         personalidad = input("Ingrese la personalidad de la persona: ")
 
                     
-        print ("\nLos posibles regalos son:")
-        print (Diccionario)
+        # devuelve una lista con los nombres de los regalos del mayor puntaje al menor
+        getSugerencias(Diccionario,dinero)
 
 
         

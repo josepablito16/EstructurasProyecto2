@@ -16,41 +16,55 @@ regalo = db.labels.create("Regalos")
 
 #gusto = "Videojuegos"
 
-def obtenerRegalo(caracteristica):        
+def obtenerRegalo(caracteristica,diccionario,puntos):        
     
     q = 'MATCH (u:Caracteristica)-[r:a]->(m:Regalos) WHERE u.name="'+caracteristica+'" RETURN u, type(r), m'
 
     results = db.query(q, returns=(client.Node, str, client.Node))
     for r in results:       
         print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
-        return r[2]["name"]
 
-def obtenerPrecio(regalito):
+        if(r[2]["name"] in diccionario):
+            #se le suman puntos
+            diccionario[r[2]["name"]].insert(0,diccionario[r[2]["name"]][0]+puntos)
+            diccionario[r[2]["name"]].pop(1)
+            print("entro")
+            
+        else:
+            #se agrega al diccionario
+            l= 'MATCH (u:Regalos)-[r:b]->(m:Caracteristica) WHERE u.name="'+r[2]["name"]+'" RETURN u, type(r), m'
+            results = db.query(l, returns=(client.Node, str, client.Node))
+            for l in results:       
+                diccionario[r[2]["name"]]=[puntos,l[2]["name"]]
+            
+        
+    return diccionario
+
+def getSugerencias(diccionario,precio):
+    nuevo={}
+    for i in diccionario:
+        print("precio"+diccionario[i][1])
+        if(diccionario[i][1]==precio):
+            print("Entro")
+            nuevo[i]=diccionario[i][0]
+
+    print(nuevo)
     
-    q = 'MATCH (u:Regalos)-[r:b]->(m:Caracteristica) WHERE u.name="'+regalito+'" RETURN u, type(r), m'
-
-    results = db.query(q, returns=(client.Node, str, client.Node))
-    for r in results:      
-        #print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
-        return r[2]["name"]
-
-def asignarPuntos(caracteristica,Diccionario,regalo):    
-
-    ptos = caracteristica
-
-    if(regalo in Diccionario):            
-        ptosActuales = Diccionario[regalo][1]
-        ptosActuales = ptosActuales + ptos
+    diccionarioLista=[]
         
-        Diccionario.insert(regalo[1],ptosActuales)
-        
-    else:
+    for i in nuevo.values():
+        diccionarioLista.append(i)
 
-        precio = obtenerPrecio(regalo)
-        
-        Diccionario[regalo] = []
-        Diccionario[regalo].append(ptos)
-        Diccionario[regalo].append(precio)                
+    diccionarioLista.sort(reverse=True)
+    print(diccionarioLista)
 
-    return Diccionario
+    sugerencia=[]
+    for x in nuevo:
+        if(nuevo[x]==diccionarioLista[0]):
+            diccionarioLista.pop(0)
+            sugerencia.append(x)
+
+    print(sugerencia)
+    return sugerencia
+            
     
