@@ -4,6 +4,7 @@ from neo4jrestclient import client
 db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
 caracteristica = db.labels.create("Caracteristica")
 regalo = db.labels.create("Regalos")
+popularidad = db.labels.create("Popularidad")
 
 ##TODAS LAS CARACTERISTICAS
 Videojuegos= db.nodes.create(name="Videojuegos")
@@ -27,12 +28,16 @@ Comida= db.nodes.create(name="Comida")
 Muycercano= db.nodes.create(name="Muycercano")
 Conocido= db.nodes.create(name="Conocido")
 
-caracteristica.add(Videojuegos,Amigo,Hombre,Celebración,Introvertido,Medio,Extrovertido,Alto,Nolosé,Muycercana,Mujer,Importante,Decoración)
+caracteristica.add(Videojuegos,Amigo,Hombre,Celebración,Introvertido,Medio,Extrovertido,Alto,Nolosé,Muycercana,Mujer,Importante,Decoración,Estilo)
 caracteristica.add(Casual,Bajo,Cualquiera,Muycercano,Comida,Conocido)
 # 1
 
 u1 = db.nodes.create(name="Coleccionable")
 regalo.add(u1)
+
+p1 = db.nodes.create(name="8")
+popularidad.add(p1)
+p1.relationships.create("c", u1)
  
 Videojuegos.relationships.create("a", u1)
 Amigo.relationships.create("a", u1)
@@ -44,6 +49,10 @@ u1.relationships.create("b", Medio)
 # 2
 u2 = db.nodes.create(name="Camisa formal")
 regalo.add(u2)
+
+p2 = db.nodes.create(name="7")
+popularidad.add(p2)
+p2.relationships.create("c", u2)
 
 Estilo.relationships.create("a", u2)
 Celebración.relationships.create("a", u2)
@@ -57,6 +66,10 @@ u2.relationships.create("b",Alto)
 u3 = db.nodes.create(name="Peluche de felpa")
 regalo.add(u3)
 
+p3 = db.nodes.create(name="8")
+popularidad.add(p3)
+p3.relationships.create("c", u3)
+
 Nolosé.relationships.create("a", u3)
 Muycercana.relationships.create("a", u3)
 Mujer.relationships.create("a", u3)
@@ -69,6 +82,9 @@ u3.relationships.create("b",Medio)
 u4 = db.nodes.create(name="Taza con mensaje especial")
 regalo.add(u4)
 
+p4 = db.nodes.create(name="6")
+popularidad.add(p4)
+p4.relationships.create("c", u4)
 
 Decoración.relationships.create("a", u4)
 Muycercana.relationships.create("a", u4)
@@ -82,6 +98,9 @@ u4.relationships.create("b", Bajo)
 u5= db.nodes.create(name="Brazalete")
 regalo.add(u5)
 
+p5 = db.nodes.create(name="7")
+popularidad.add(p5)
+p5.relationships.create("c", u5)
 
 Estilo.relationships.create("a", u5)
 Amigo.relationships.create("a", u5)
@@ -95,6 +114,9 @@ u5.relationships.create("b",Bajo)
 u6= db.nodes.create(name="Invitación a comer")
 regalo.add(u6)
 
+p6 = db.nodes.create(name="5")
+popularidad.add(p6)
+p6.relationships.create("c", u6)
 
 Comida.relationships.create("a", u6)
 Amigo.relationships.create("a", u6)
@@ -109,6 +131,9 @@ u6.relationships.create("b", Medio)
 u7= db.nodes.create(name="Bolsa de dulces")
 regalo.add(u7)
 
+p7 = db.nodes.create(name="6")
+popularidad.add(p7)
+p7.relationships.create("c", u7)
 
 Comida.relationships.create("a", u7)
 Muycercana.relationships.create("a", u7)
@@ -122,6 +147,9 @@ u7.relationships.create("b", Bajo)
 u8= db.nodes.create(name="Cosméticos")
 regalo.add(u8)
 
+p8 = db.nodes.create(name="10")
+popularidad.add(p8)
+p8.relationships.create("c", u8)
 
 Estilo.relationships.create("a", u8)
 Muycercana.relationships.create("a", u8)
@@ -132,13 +160,17 @@ u8.relationships.create("b", Medio)
 
 # 9
 
-u9= db.nodes.create(name="Cosméticos")
+u9= db.nodes.create(name="Cupon de descuento")
 regalo.add(u9)
 
-Estilo.relationships.create("a", u9)
-Muycercana.relationships.create("a", u9)
-Mujer.relationships.create("a", u9)
-Celebración.relationships.create("a", u9)
+p9 = db.nodes.create(name="10")
+popularidad.add(p9)
+p9.relationships.create("c", u9)
+
+Cualquiera.relationships.create("a", u9)
+Amigo.relationships.create("a", u9)
+Cualquiera.relationships.create("a", u9)
+Casual.relationships.create("a", u9)
 Extrovertido.relationships.create("a", u9)
 u9.relationships.create("b", Medio)
 
@@ -146,6 +178,10 @@ u9.relationships.create("b", Medio)
 
 u10= db.nodes.create(name="Billetera")
 regalo.add(u10)
+
+p10 = db.nodes.create(name="7")
+popularidad.add(p10)
+p10.relationships.create("c", u10)
 
 Estilo.relationships.create("a", u10)
 Conocido.relationships.create("a", u10)
@@ -158,6 +194,10 @@ u10.relationships.create("b", Alto)
 
 u11= db.nodes.create(name="Retrato")
 regalo.add(u11)
+    
+p11 = db.nodes.create(name="7")
+popularidad.add(p11)
+p11.relationships.create("c", u11)
 
 Decoración.relationships.create("a", u11)
 Muycercano.relationships.create("a", u11)
