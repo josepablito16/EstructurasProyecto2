@@ -49,13 +49,13 @@ while True:
 
         #ASIGNACION DE GENEROS
         print (listaGeneros)
-        genero = input("Ingrese el genero: ")
+        generos = input("Ingrese el genero: ")
 
-        if (genero=="1"):
+        if (generos=="1"):
             genero = "Hombre"
-        elif (genero=="2"):
+        elif (generos=="2"):
             genero = "Mujer"
-        elif (genero == "3"):
+        elif (generos == "3"):
             genero = "Indefinido"
 
         Diccionario = obtenerRegalo(genero,Diccionario,1)
@@ -87,21 +87,62 @@ while True:
 
         #ASIGNACION DE CERCANIA
         print (listaCercania)
-        cercania = input("Ingrese la cercania: ")
+        cercanias = input("Ingrese la cercania: ")
 
+        if(cercanias == "1"):
+            cercania = "Conocido"
+        elif(cercanias == "2"):
+            cercania = "Amigo"
+        elif(cercanias == "3"):
+            cercania = "Muy cercano"
 
+        #Diccionario = obtenerRegalo(cercania,Diccionario,1)
+        #print(Diccionario)
+        
         #ASIGNACION DE OCASION
         print (listaOcasion)
-        ocasion = input("Ingrese la ocasion: ")
-        
+        ocasiones = input("Ingrese la ocasion: ")
+
+        if(ocasiones == "1"):
+            ocasion = "Casual"
+        elif(ocasiones == "2"):
+            ocasion = "Celebracion"
+        elif(ocasiones == "3"):
+            ocasion = "Importante"        
+
+        #Diccionario = obtenerRegalo(ocasion,Diccionario,1)
+        #print(Diccionario)
 
         #ASIGNACION DE PERSONALIDAD
         print (listaPersonalidad)
-        personalidad = input("Ingrese la personalidad de la persona: ")
+        personalidades = int(input("Ingrese la personalidad de la persona: "))
+        personalidad = ""
+        if(personalidades == 1):
+            per = "Introvertido"
+        elif(personalidades == 2):
+            per = "Extrovertido"
+        elif(personalidades == 3):
+            per = "Activo"
 
-                    
+        #Diccionario = obtenerRegalo(personalidad,Diccionario,1)
+        #print(Diccionario)
+
+
+        #Muestra lo que el usuario selecciono
+        print("\n--------------------\nUsted selecciono:\n"
+              + "Presupuesto: " + dinero
+              + "\nGenero: " + genero
+              + "\nGustos: " + gustos
+              + "\nCercania: " + cercania
+              + "\nOcasion: " + ocasion
+              + "\nPersonalidad: " + per
+              + "\n------------------\n")
+        
         # devuelve una lista con los nombres de los regalos del mayor puntaje al menor
         getSugerencias(Diccionario,dinero)
+    else:
+        print("Gracias por usar este sistema de recomendacion")
+        break;
 
 
         

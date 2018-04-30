@@ -13,7 +13,7 @@ from neo4jrestclient import client
 db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
 caracteristica = db.labels.create("Caracteristica")
 regalo = db.labels.create("Regalos")
-
+popularidad = db.labels.create("Popularidad")
 #gusto = "Videojuegos"
 
 def obtenerRegalo(caracteristica,diccionario,puntos):        
