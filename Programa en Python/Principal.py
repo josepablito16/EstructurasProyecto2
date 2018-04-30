@@ -139,7 +139,12 @@ while True:
               + "\n------------------\n")
         
         # devuelve una lista con los nombres de los regalos del mayor puntaje al menor
-        getSugerencias(Diccionario,dinero)
+        sugerencias = getSugerencias(Diccionario,dinero)
+
+        for i in sugerencias:
+            resultado = getPopularidad(i)
+            print (i + " -> " + resultado)
+        
     else:
         print("Gracias por usar este sistema de recomendacion")
         break;

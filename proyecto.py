@@ -38,14 +38,11 @@ Activo = db.nodes.create(name="Activo")
 
 caracteristica.add(Videojuegos,Amigo,Hombre,Celebración,Introvertido,Medio,Extrovertido,Alto,Nolosé,Muycercana,Mujer,Importante,Decoración,Estilo)
 caracteristica.add(Casual,Bajo,Cualquiera,Muycercano,Comida,Conocido,Musica,Fiestas,Entretenimiento,Estudios,Viajes,Aventuras,Deportes,Activo)
+
 # 1
 
-u1 = db.nodes.create(name="Coleccionable")
+u1 = db.nodes.create(name="Coleccionable", popularidad = "8")
 regalo.add(u1)
-
-p1 = db.nodes.create(name="8")
-popularidad.add(p1)
-p1.relationships.create("c", u1)
  
 Videojuegos.relationships.create("a", u1)
 Amigo.relationships.create("a", u1)
@@ -55,12 +52,8 @@ Introvertido.relationships.create("a", u1)
 u1.relationships.create("b", Medio)
 
 # 2
-u2 = db.nodes.create(name="Camisa formal")
+u2 = db.nodes.create(name="Camisa formal", popularidad = "8")
 regalo.add(u2)
-
-p2 = db.nodes.create(name="7")
-popularidad.add(p2)
-p2.relationships.create("c", u2)
 
 Estilo.relationships.create("a", u2)
 Celebración.relationships.create("a", u2)
@@ -71,12 +64,8 @@ u2.relationships.create("b",Alto)
 
 # 3
 
-u3 = db.nodes.create(name="Peluche de felpa")
+u3 = db.nodes.create(name="Peluche de felpa", popularidad = "7")
 regalo.add(u3)
-
-p3 = db.nodes.create(name="8")
-popularidad.add(p3)
-p3.relationships.create("c", u3)
 
 Nolosé.relationships.create("a", u3)
 Muycercana.relationships.create("a", u3)
@@ -87,12 +76,8 @@ u3.relationships.create("b",Medio)
 
 # 4
 
-u4 = db.nodes.create(name="Taza con mensaje especial")
+u4 = db.nodes.create(name="Taza con mensaje especial", popularidad = "6")
 regalo.add(u4)
-
-p4 = db.nodes.create(name="6")
-popularidad.add(p4)
-p4.relationships.create("c", u4)
 
 Decoración.relationships.create("a", u4)
 Muycercana.relationships.create("a", u4)
@@ -103,12 +88,8 @@ u4.relationships.create("b", Bajo)
 
 # 5
 
-u5= db.nodes.create(name="Brazalete")
+u5= db.nodes.create(name="Brazalete", popularidad = "7")
 regalo.add(u5)
-
-p5 = db.nodes.create(name="7")
-popularidad.add(p5)
-p5.relationships.create("c", u5)
 
 Estilo.relationships.create("a", u5)
 Amigo.relationships.create("a", u5)
@@ -119,12 +100,8 @@ u5.relationships.create("b",Bajo)
 
 # 6
 
-u6= db.nodes.create(name="Invitación a comer")
+u6= db.nodes.create(name="Invitación a comer", popularidad = "5")
 regalo.add(u6)
-
-p6 = db.nodes.create(name="5")
-popularidad.add(p6)
-p6.relationships.create("c", u6)
 
 Comida.relationships.create("a", u6)
 Amigo.relationships.create("a", u6)
@@ -136,12 +113,8 @@ u6.relationships.create("b", Medio)
 
 # 7
 
-u7= db.nodes.create(name="Bolsa de dulces")
+u7= db.nodes.create(name="Bolsa de dulces", popularidad = "6")
 regalo.add(u7)
-
-p7 = db.nodes.create(name="6")
-popularidad.add(p7)
-p7.relationships.create("c", u7)
 
 Comida.relationships.create("a", u7)
 Muycercana.relationships.create("a", u7)
@@ -152,12 +125,8 @@ u7.relationships.create("b", Bajo)
 
 # 8
 
-u8= db.nodes.create(name="Cosméticos")
+u8= db.nodes.create(name="Cosméticos", popularidad = "10")
 regalo.add(u8)
-
-p8 = db.nodes.create(name="10")
-popularidad.add(p8)
-p8.relationships.create("c", u8)
 
 Estilo.relationships.create("a", u8)
 Muycercana.relationships.create("a", u8)
@@ -168,12 +137,8 @@ u8.relationships.create("b", Medio)
 
 # 9
 
-u9= db.nodes.create(name="Cupon de descuento")
+u9= db.nodes.create(name="Cupon de descuento", popularidad = "10")
 regalo.add(u9)
-
-p9 = db.nodes.create(name="10")
-popularidad.add(p9)
-p9.relationships.create("c", u9)
 
 Nolosé.relationships.create("a", u9)
 Amigo.relationships.create("a", u9)
@@ -184,12 +149,8 @@ u9.relationships.create("b", Medio)
 
 # 10
 
-u10= db.nodes.create(name="Billetera")
+u10= db.nodes.create(name="Billetera", popularidad = "7")
 regalo.add(u10)
-
-p10 = db.nodes.create(name="7")
-popularidad.add(p10)
-p10.relationships.create("c", u10)
 
 Estilo.relationships.create("a", u10)
 Conocido.relationships.create("a", u10)
@@ -200,12 +161,8 @@ u10.relationships.create("b", Alto)
 
 # 11
 
-u11= db.nodes.create(name="Retrato")
+u11= db.nodes.create(name="Retrato", popularidad = "7")
 regalo.add(u11)
-    
-p11 = db.nodes.create(name="7")
-popularidad.add(p11)
-p11.relationships.create("c", u11)
 
 Decoración.relationships.create("a", u11)
 Muycercano.relationships.create("a", u11)
@@ -216,12 +173,8 @@ u11.relationships.create("b", Medio)
 
 #12 - Audifonos
 
-u12= db.nodes.create(name="Audífonos")
+u12= db.nodes.create(name="Audífonos", popularidad = "8")
 regalo.add(u12)
-    
-p12 = db.nodes.create(name="8")
-popularidad.add(p12)
-p12.relationships.create("c", u12)
 
 Musica.relationships.create("a", u12)
 Amigo.relationships.create("a", u12)
@@ -232,12 +185,8 @@ u12.relationships.create("b", Medio)
 
 #13 - Losion
 
-u13= db.nodes.create(name="Losión")
+u13= db.nodes.create(name="Losión", popularidad = "6")
 regalo.add(u13)
-    
-p13 = db.nodes.create(name="6")
-popularidad.add(p13)
-p13.relationships.create("c", u13)
 
 Fiestas.relationships.create("a", u13)
 Muycercano.relationships.create("a", u13)
@@ -249,12 +198,8 @@ u13.relationships.create("b", Alto)
 
 #14 - Juego de mesa
 
-u14= db.nodes.create(name="Juego de mesa")
+u14= db.nodes.create(name="Juego de mesa", popularidad = "7")
 regalo.add(u14)
-    
-p14 = db.nodes.create(name="7")
-popularidad.add(p14)
-p14.relationships.create("c", u14)
 
 Entretenimiento.relationships.create("a", u14)
 Amigo.relationships.create("a", u14)
@@ -265,12 +210,8 @@ u14.relationships.create("b", Medio)
 
 #15 - Corbata formal
 
-u15= db.nodes.create(name="Corbata formal")
+u15= db.nodes.create(name="Corbata formal", popularidad = "6")
 regalo.add(u15)
-    
-p15 = db.nodes.create(name="6")
-popularidad.add(p15)
-p15.relationships.create("c", u15)
 
 Fiestas.relationships.create("a", u15)
 Estilo.relationships.create("a", u15)
@@ -282,12 +223,8 @@ u15.relationships.create("b", Medio)
 
 #16 - Guitarra
 
-u16= db.nodes.create(name="Guitarra")
+u16= db.nodes.create(name="Guitarra", popularidad = "10")
 regalo.add(u16)
-    
-p16 = db.nodes.create(name="10")
-popularidad.add(p16)
-p16.relationships.create("c", u16)
 
 Musica.relationships.create("a", u16)
 Muycercano.relationships.create("a", u16)
@@ -298,12 +235,8 @@ u16.relationships.create("b", Alto)
 
 #17 - Losion
 
-u17= db.nodes.create(name="Mochila")
+u17= db.nodes.create(name="Mochila", popularidad = "8")
 regalo.add(u17)
-    
-p17 = db.nodes.create(name="8")
-popularidad.add(p17)
-p17.relationships.create("c", u17)
 
 Estudios.relationships.create("a", u17)
 Aventuras.relationships.create("a", u17)
@@ -316,12 +249,8 @@ u17.relationships.create("b", Alto)
 
 #18 - Gorra
 
-u18= db.nodes.create(name="Gorra")
+u18= db.nodes.create(name="Gorra", popularidad = "6")
 regalo.add(u18)
-    
-p18 = db.nodes.create(name="6")
-popularidad.add(p18)
-p18.relationships.create("c", u18)
 
 Estilo.relationships.create("a", u18)
 Conocido.relationships.create("a", u18)
@@ -332,12 +261,8 @@ u18.relationships.create("b", Alto)
 
 #19 - Fidget Spinner
 
-u19= db.nodes.create(name="Fidget Spinner")
+u19= db.nodes.create(name="Fidget Spinner", popularidad = "4")
 regalo.add(u19)
-    
-p19 = db.nodes.create(name="4")
-popularidad.add(p19)
-p19.relationships.create("c", u19)
 
 Entretenimiento.relationships.create("a", u19)
 Conocido.relationships.create("a", u19)
@@ -348,12 +273,8 @@ u19.relationships.create("b", Bajo)
 
 #20 - Tennis
 
-u20= db.nodes.create(name="Tennis")
+u20= db.nodes.create(name="Tennis", popularidad = "9")
 regalo.add(u20)
-    
-p20 = db.nodes.create(name="9")
-popularidad.add(p20)
-p20.relationships.create("c", u20)
 
 Deportes.relationships.create("a", u20)
 Muycercano.relationships.create("a", u20)
@@ -364,12 +285,8 @@ u20.relationships.create("b", Alto)
 
 #21 - Pelota de futbol
 
-u21= db.nodes.create(name="Pelota de futbol")
+u21= db.nodes.create(name="Pelota de futbol", popularidad = "8")
 regalo.add(u21)
-    
-p21 = db.nodes.create(name="8")
-popularidad.add(p21)
-p21.relationships.create("c", u21)
 
 Deportes.relationships.create("a", u21)
 Amigo.relationships.create("a", u21)
@@ -380,12 +297,8 @@ u21.relationships.create("b", Medio)
 
 #22 - Caja de chocolates
 
-u22= db.nodes.create(name="Caja de chocolates")
+u22= db.nodes.create(name="Caja de chocolates", popularidad = "8")
 regalo.add(u22)
-    
-p22 = db.nodes.create(name="8")
-popularidad.add(p22)
-p22.relationships.create("c", u22)
 
 Comida.relationships.create("a", u22)
 Muycercano.relationships.create("a", u22)
@@ -396,12 +309,8 @@ u22.relationships.create("b", Medio)
 
 #23 - Ramo de flores
 
-u23= db.nodes.create(name="Ramo de flores")
+u23= db.nodes.create(name="Ramo de flores", popularidad = "6")
 regalo.add(u23)
-    
-p23 = db.nodes.create(name="6")
-popularidad.add(p23)
-p23.relationships.create("c", u23)
 
 Decoración.relationships.create("a", u23)
 Muycercano.relationships.create("a", u23)
@@ -412,12 +321,8 @@ u23.relationships.create("b", Bajo)
 
 #24 - Juego de aretes
 
-u24= db.nodes.create(name="Juego de aretes")
+u24= db.nodes.create(name="Juego de aretes", popularidad = "8")
 regalo.add(u24)
-    
-p24 = db.nodes.create(name="8")
-popularidad.add(p24)
-p24.relationships.create("c", u24)
 
 Estilo.relationships.create("a", u24)
 Amigo.relationships.create("a", u24)
@@ -428,12 +333,8 @@ u24.relationships.create("b", Alto)
 
 #25 - Llavero
 
-u25= db.nodes.create(name="Llavero")
+u25= db.nodes.create(name="Llavero", popularidad = "4")
 regalo.add(u25)
-    
-p25 = db.nodes.create(name="4")
-popularidad.add(p25)
-p25.relationships.create("c", u25)
 
 Decoración.relationships.create("a", u25)
 Amigo.relationships.create("a", u25)
@@ -444,12 +345,8 @@ u25.relationships.create("b", Bajo)
 
 #26 - Camisola de equipo
 
-u26= db.nodes.create(name="Camisola de equipo")
+u26= db.nodes.create(name="Camisola de equipo", popularidad = "8")
 regalo.add(u26)
-    
-p26 = db.nodes.create(name="8")
-popularidad.add(p26)
-p26.relationships.create("c", u26)
 
 Deportes.relationships.create("a", u26)
 Amigo.relationships.create("a", u26)
@@ -460,12 +357,8 @@ u26.relationships.create("b", Medio)
 
 #27 - Silla portatil
 
-u27= db.nodes.create(name="Silla portatil")
+u27= db.nodes.create(name="Silla portatil", popularidad = "7")
 regalo.add(u27)
-    
-p27 = db.nodes.create(name="7")
-popularidad.add(p27)
-p27.relationships.create("c", u27)
 
 Aventuras.relationships.create("a", u27)
 Amigo.relationships.create("a", u27)
@@ -476,12 +369,8 @@ u27.relationships.create("b", Medio)
 
 #28 - Bocinas
 
-u28= db.nodes.create(name="Bocinas")
+u28= db.nodes.create(name="Bocinas", popularidad = "10")
 regalo.add(u28)
-    
-p28 = db.nodes.create(name="10")
-popularidad.add(p28)
-p28.relationships.create("c", u28)
 
 Musica.relationships.create("a", u28)
 Amigo.relationships.create("a", u28)
@@ -492,12 +381,8 @@ u28.relationships.create("b", Medio)
 
 #29 - Boletos de avión
 
-u29= db.nodes.create(name="Boletos de avion")
+u29= db.nodes.create(name="Boletos de avion", popularidad = "10")
 regalo.add(u29)
-    
-p29 = db.nodes.create(name="10")
-popularidad.add(p29)
-p29.relationships.create("c", u29)
 
 Viajes.relationships.create("a", u29)
 Aventuras.relationships.create("a", u29)
