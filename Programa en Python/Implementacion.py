@@ -10,9 +10,6 @@
 from neo4jrestclient.client import GraphDatabase
 from neo4jrestclient import client
 
-from re import escape
-from django.conf import settings
-from neo4jtut.contextmanager import Neo4jDBSessionManager
 
 db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
 manager = Neo4jDBSessionManager(settings.NEO4J_RESOURCE_URI, settings.NEO4J_USERNAME, settings.NEO4J_PASSWORD)
