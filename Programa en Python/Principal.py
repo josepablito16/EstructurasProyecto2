@@ -45,17 +45,20 @@ while True:
         if(presupuesto==3):
             dinero="Alto"
 
+        print(Diccionario)
+    
+
         
 
         #ASIGNACION DE GENEROS
         print (listaGeneros)
-        generos = input("Ingrese el genero: ")
+        genero = input("Ingrese el genero: ")
 
-        if (generos=="1"):
+        if (genero=="1"):
             genero = "Hombre"
-        elif (generos=="2"):
+        elif (genero=="2"):
             genero = "Mujer"
-        elif (generos == "3"):
+        elif (genero == "3"):
             genero = "Indefinido"
 
         Diccionario = obtenerRegalo(genero,Diccionario,1)
@@ -87,69 +90,24 @@ while True:
 
         #ASIGNACION DE CERCANIA
         print (listaCercania)
-        cercanias = input("Ingrese la cercania: ")
+        cercania = input("Ingrese la cercania: ")
+        Diccionario = obtenerRegalo(cercania,Diccionario,1)
+        print(Diccionario)
 
-        if(cercanias == "1"):
-            cercania = "Conocido"
-        elif(cercanias == "2"):
-            cercania = "Amigo"
-        elif(cercanias == "3"):
-            cercania = "Muy cercano"
 
-        #Diccionario = obtenerRegalo(cercania,Diccionario,1)
-        #print(Diccionario)
-        
         #ASIGNACION DE OCASION
         print (listaOcasion)
-        ocasiones = input("Ingrese la ocasion: ")
-
-        if(ocasiones == "1"):
-            ocasion = "Casual"
-        elif(ocasiones == "2"):
-            ocasion = "Celebracion"
-        elif(ocasiones == "3"):
-            ocasion = "Importante"        
-
-        #Diccionario = obtenerRegalo(ocasion,Diccionario,1)
-        #print(Diccionario)
+        ocasion = input("Ingrese la ocasion: ")
+        Diccionario = obtenerRegalo(ocasion,Diccionario,1)
+        print(Diccionario)
+        
 
         #ASIGNACION DE PERSONALIDAD
         print (listaPersonalidad)
-        personalidades = int(input("Ingrese la personalidad de la persona: "))
-        personalidad = ""
-        if(personalidades == 1):
-            per = "Introvertido"
-        elif(personalidades == 2):
-            per = "Extrovertido"
-        elif(personalidades == 3):
-            per = "Activo"
+        personalidad = input("Ingrese la personalidad de la persona: ")
+        Diccionario = obtenerRegalo(personalidad,Diccionario,1)
+        print(Diccionario)
 
-        #Diccionario = obtenerRegalo(personalidad,Diccionario,1)
-        #print(Diccionario)
-
-
-        #Muestra lo que el usuario selecciono
-        print("\n--------------------\nUsted selecciono:\n"
-              + "Presupuesto: " + dinero
-              + "\nGenero: " + genero
-              + "\nGustos: " + gustos
-              + "\nCercania: " + cercania
-              + "\nOcasion: " + ocasion
-              + "\nPersonalidad: " + per
-              + "\n------------------\n")
-        
+                    
         # devuelve una lista con los nombres de los regalos del mayor puntaje al menor
-        sugerencias = getSugerencias(Diccionario,dinero)
-
-        for i in sugerencias:
-            resultado = getPopularidad(i)
-            print (i + " -> " + resultado)
-        
-    else:
-        print("Gracias por usar este sistema de recomendacion")
-        break;
-
-
-        
-        
-        
+        getSugerencias(Diccionario,dinero)

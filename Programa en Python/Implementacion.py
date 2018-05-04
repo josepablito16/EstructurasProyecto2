@@ -9,14 +9,17 @@
 
 from neo4jrestclient.client import GraphDatabase
 from neo4jrestclient import client
-#from neo4j.v1 import GraphDatabase
+
+from re import escape
+from django.conf import settings
+from neo4jtut.contextmanager import Neo4jDBSessionManager
 
 db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
-uri = "bolt://localhost:7687"
-driver = GraphDatabase.driver(uri, auth=("neo4j", "password"))
+manager = Neo4jDBSessionManager(settings.NEO4J_RESOURCE_URI, settings.NEO4J_USERNAME, settings.NEO4J_PASSWORD)
+
 caracteristica = db.labels.create("Caracteristica")
 regalo = db.labels.create("Regalos")
-popularidad = db.labels.create("Popularidad")
+
 #gusto = "Videojuegos"
 
 def obtenerRegalo(caracteristica,diccionario,puntos):        
@@ -69,16 +72,3 @@ def getSugerencias(diccionario,precio):
 
     print(sugerencia)
     return sugerencia
-            
-
-def getPopularidad(regalo):
-    resultado = db.query('MERGE (r:Regalos {name: '+regalo+'}) RETURN r.popularidad')
-    return resultado
-     #with driver.session() as session:
-        with session.begin_transaction() as tx:
-            for record in tx.run("MATCH (a:Person)-[:KNOWS]->(f) "
-                                 "WHERE a.name = {name} "
-                                 "RETURN f.name", name=name):
-                print(record["f.name"])#
-    
-   
