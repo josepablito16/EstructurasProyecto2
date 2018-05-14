@@ -11,8 +11,7 @@ from neo4jrestclient.client import GraphDatabase
 from neo4jrestclient import client
 
 
-db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
-manager = Neo4jDBSessionManager(settings.NEO4J_RESOURCE_URI, settings.NEO4J_USERNAME, settings.NEO4J_PASSWORD)
+db = GraphDatabase("http://localhost:11007", username="neo4j", password="mypassword")
 
 caracteristica = db.labels.create("Caracteristica")
 regalo = db.labels.create("Regalos")
@@ -46,9 +45,18 @@ def obtenerRegalo(caracteristica,diccionario,puntos):
 def getSugerencias(diccionario,precio):
     nuevo={}
     for i in diccionario:
+        print("Nombre :"+i)
         print("precio"+diccionario[i][1])
         if(diccionario[i][1]==precio):
             print("Entro")
+            q = 'MATCH (u:Regalos) WHERE u.name="'+i+'" RETURN u'
+            reg = db.query(q, returns=(client.Node))
+            for z in reg:
+                diccionario[i][0]=diccionario[i][0]*int(z[0]["popularidad"])
+                
+            print("# de coincidencias: "+str(diccionario[i][0]))
+
+            
             nuevo[i]=diccionario[i][0]
 
     print(nuevo)
@@ -62,10 +70,30 @@ def getSugerencias(diccionario,precio):
     print(diccionarioLista)
 
     sugerencia=[]
-    for x in nuevo:
-        if(nuevo[x]==diccionarioLista[0]):
-            diccionarioLista.pop(0)
-            sugerencia.append(x)
+    contadorControl=0
+    limite=len(diccionarioLista)-1
+    
+    controlFor=True
+
+    while controlFor:
+        for x in nuevo:
+            if(contadorControl==limite):
+                controlFor=False
+                break
+            try:
+                
+                #print("entro For :"+str(nuevo[x])+"-"+str(diccionarioLista[0]))
+                if(nuevo[x]==diccionarioLista[0]):            
+                    diccionarioLista.pop(0)
+                    sugerencia.append(x)
+            except IndexError:
+                limite=limite-1
+                controlFor=False
+                break
+                
+        contadorControl=contadorControl+1
+        
+            
 
     print(sugerencia)
     return sugerencia
