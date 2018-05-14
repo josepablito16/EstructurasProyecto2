@@ -110,4 +110,20 @@ while True:
 
                     
         # devuelve una lista con los nombres de los regalos del mayor puntaje al menor
-        getSugerencias(Diccionario,dinero)
+        listaSugerencias=getSugerencias(Diccionario,dinero)
+
+        print("\n")
+        print("\n")
+        print("\n")
+        print("\n")
+        print("\n")
+        print("\n")
+
+        imprimarListaReg(listaSugerencias)
+        seleccionRegalo=int(input("Ayudenos a mejorar, indique el numero de regalo escogio"))
+        print(listaSugerencias[seleccionRegalo-1])
+
+        puntuacionRegalo=int(input("Valore el regalo con una puntuacion de 1 a 10"))
+        
+        actualizarPuntuacion(listaSugerencias[seleccionRegalo-1],puntuacionRegalo)
+        

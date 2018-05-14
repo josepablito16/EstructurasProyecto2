@@ -52,7 +52,7 @@ def getSugerencias(diccionario,precio):
             q = 'MATCH (u:Regalos) WHERE u.name="'+i+'" RETURN u'
             reg = db.query(q, returns=(client.Node))
             for z in reg:
-                diccionario[i][0]=diccionario[i][0]*int(z[0]["popularidad"])
+                diccionario[i][0]=diccionario[i][0]*float(z[0]["popularidad"])
                 
             print("# de coincidencias: "+str(diccionario[i][0]))
 
@@ -97,3 +97,16 @@ def getSugerencias(diccionario,precio):
 
     print(sugerencia)
     return sugerencia
+
+def actualizarPuntuacion(regalo,puntuacion):
+    q ='MATCH (u:Regalos) WHERE u.name="'+regalo+'" RETURN u'
+
+    results = db.query(q, returns=(client.Node))
+    for r in results:       
+        r[0]["popularidad"]=str((float(r[0]["popularidad"])+puntuacion)/2)
+
+def imprimarListaReg(lista):
+    contador=0
+    for i in lista:
+        contador=contador+1
+        print(str(contador)+". "+str(i))
