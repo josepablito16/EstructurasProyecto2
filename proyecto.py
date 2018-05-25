@@ -1,7 +1,7 @@
 from neo4jrestclient.client import GraphDatabase
 from neo4jrestclient import client
  
-db = GraphDatabase("http://localhost:11007", username="neo4j", password="mypassword")
+db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
 caracteristica = db.labels.create("Caracteristica")
 regalo = db.labels.create("Regalos")
 popularidad = db.labels.create("Popularidad")

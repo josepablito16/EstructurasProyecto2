@@ -11,7 +11,7 @@ from neo4jrestclient.client import GraphDatabase
 from neo4jrestclient import client
 
 
-db = GraphDatabase("http://localhost:11007", username="neo4j", password="mypassword")
+db = GraphDatabase("http://localhost:7474", username="neo4j", password="mypassword")
 
 caracteristica = db.labels.create("Caracteristica")
 regalo = db.labels.create("Regalos")
@@ -24,13 +24,13 @@ def obtenerRegalo(caracteristica,diccionario,puntos):
 
     results = db.query(q, returns=(client.Node, str, client.Node))
     for r in results:       
-        print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
+        #print("(%s)-[%s]->(%s)" % (r[0]["name"], r[1], r[2]["name"]))
 
         if(r[2]["name"] in diccionario):
             #se le suman puntos
             diccionario[r[2]["name"]].insert(0,diccionario[r[2]["name"]][0]+puntos)
             diccionario[r[2]["name"]].pop(1)
-            print("entro")
+            #print("entro")
             
         else:
             #se agrega al diccionario
@@ -45,21 +45,21 @@ def obtenerRegalo(caracteristica,diccionario,puntos):
 def getSugerencias(diccionario,precio):
     nuevo={}
     for i in diccionario:
-        print("Nombre :"+i)
-        print("precio"+diccionario[i][1])
+        #print("Nombre :"+i)
+        #print("precio"+diccionario[i][1])
         if(diccionario[i][1]==precio):
-            print("Entro")
+            #print("Entro")
             q = 'MATCH (u:Regalos) WHERE u.name="'+i+'" RETURN u'
             reg = db.query(q, returns=(client.Node))
             for z in reg:
                 diccionario[i][0]=diccionario[i][0]*float(z[0]["popularidad"])
                 
-            print("# de coincidencias: "+str(diccionario[i][0]))
+            #print("# de coincidencias: "+str(diccionario[i][0]))
 
             
             nuevo[i]=diccionario[i][0]
 
-    print(nuevo)
+    #print(nuevo)
     
     diccionarioLista=[]
         
@@ -67,7 +67,7 @@ def getSugerencias(diccionario,precio):
         diccionarioLista.append(i)
 
     diccionarioLista.sort(reverse=True)
-    print(diccionarioLista)
+    #print(diccionarioLista)
 
     sugerencia=[]
     contadorControl=0
@@ -95,7 +95,7 @@ def getSugerencias(diccionario,precio):
         
             
 
-    print(sugerencia)
+    #print(sugerencia)
     return sugerencia
 
 def actualizarPuntuacion(regalo,puntuacion):

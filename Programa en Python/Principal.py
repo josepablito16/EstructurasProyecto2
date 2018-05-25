@@ -9,6 +9,7 @@
 
 
 from Implementacion import *
+import webbrowser
 
 
 #___________Declaracion de variables__________#
@@ -27,6 +28,7 @@ Diccionario = {}
 
 while True:
 
+    
     print (menu)
     seleccion = input("Ingrese la accion que desea realizar: ")
 
@@ -45,7 +47,7 @@ while True:
         if(presupuesto==3):
             dinero="Alto"
 
-        print(Diccionario)
+        #print(Diccionario)
     
 
         
@@ -62,7 +64,7 @@ while True:
             genero = "Indefinido"
 
         Diccionario = obtenerRegalo(genero,Diccionario,1)
-        print(Diccionario)
+        #print(Diccionario)
        
         #ASIGNACION DE GUSTOS
         print (listaGustos)
@@ -86,32 +88,32 @@ while True:
             gustos = "Aventuras"
 
         Diccionario = obtenerRegalo(gustos,Diccionario,1)
-        print(Diccionario)
+        #print(Diccionario)
 
         #ASIGNACION DE CERCANIA
         print (listaCercania)
         cercania = input("Ingrese la cercania: ")
         Diccionario = obtenerRegalo(cercania,Diccionario,1)
-        print(Diccionario)
+        #print(Diccionario)
 
 
         #ASIGNACION DE OCASION
         print (listaOcasion)
         ocasion = input("Ingrese la ocasion: ")
         Diccionario = obtenerRegalo(ocasion,Diccionario,1)
-        print(Diccionario)
+        #print(Diccionario)
         
 
         #ASIGNACION DE PERSONALIDAD
         print (listaPersonalidad)
         personalidad = input("Ingrese la personalidad de la persona: ")
         Diccionario = obtenerRegalo(personalidad,Diccionario,1)
-        print(Diccionario)
+        #print(Diccionario)
 
                     
         # devuelve una lista con los nombres de los regalos del mayor puntaje al menor
         listaSugerencias=getSugerencias(Diccionario,dinero)
-
+        
         print("\n")
         print("\n")
         print("\n")
@@ -119,11 +121,22 @@ while True:
         print("\n")
         print("\n")
 
-        imprimarListaReg(listaSugerencias)
-        seleccionRegalo=int(input("Ayudenos a mejorar, indique el numero de regalo escogio"))
+        if(len(listaSugerencias) > 0):
+            imprimarListaReg(listaSugerencias)
+        else:
+            print("No hemos podido encontrar coincidencias\n")
+
+        url1 = "https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords="
+        seleccionRegalo=int(input("Ayudenos a mejorar, indique el numero de regalo escogio: "))
         print(listaSugerencias[seleccionRegalo-1])
+        url = url1 + listaSugerencias[seleccionRegalo-1]
+        webbrowser.open_new(url)
 
-        puntuacionRegalo=int(input("Valore el regalo con una puntuacion de 1 a 10"))
+        puntuacionRegalo=int(input("Valore el regalo con una puntuacion de 1 a 10: "))
         
         actualizarPuntuacion(listaSugerencias[seleccionRegalo-1],puntuacionRegalo)
+
+    else:
+        print("\nGracias por utilizar este sistema de recomendacion :)\n")
+        break
         
