@@ -130,12 +130,12 @@ while True:
         seleccionRegalo=int(input("Ayudenos a mejorar, indique el numero de regalo escogio: "))
         print(listaSugerencias[seleccionRegalo-1])
         url = url1 + listaSugerencias[seleccionRegalo-1]
-        webbrowser.open_new(url)
 
         puntuacionRegalo=int(input("Valore el regalo con una puntuacion de 1 a 10: "))
         
         actualizarPuntuacion(listaSugerencias[seleccionRegalo-1],puntuacionRegalo)
-
+        
+        webbrowser.open_new(url)
     else:
         print("\nGracias por utilizar este sistema de recomendacion :)\n")
         break
